@@ -29,7 +29,9 @@ class Property(models.Model):
 
     def src(self):
         #back = 4 would give us an output of /properties/static/output/image.jpg
-        path = '/'.join(self.image.path.split('\\')[-4:])
+        static_url = '/home/bendominguez011/mainstreetrealty/properties/static/properties'
+        path = '/'.join(self.image.path.split('\\')[-2:])
+        path = static_url + path
         return path
 
     def bathrooms(self):
