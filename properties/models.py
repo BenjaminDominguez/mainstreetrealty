@@ -29,7 +29,7 @@ class Property(models.Model):
 
     def src(self):
         #back = 4 would give us an output of /properties/static/uploads/image.jpg
-        path = '/'.join(self.image.path.split('\\')[-2:])
+        path = '/'.join(self.image.path.split('\\')[-3:])
         return path
 
     def bathrooms(self):
