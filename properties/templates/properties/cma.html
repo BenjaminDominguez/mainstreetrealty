@@ -1,0 +1,123 @@
+{% extends "properties/base.html" %}
+{% block app_content %}
+
+<main id="content" role="main">
+<div id="background" class="position-relative z-index-1 gradient-overlay-half-primary-v2">
+<header class="pl-10 pt-10 mb-5">
+  <div class="row justify-content-start mr-auto">
+    <div class="col-12 col-md-2">
+  <a href="/" class="btn btn-md btn-soft-light transition-3d-hover">Go back to index</a>
+    </div>
+  </div>
+</header>
+<div class="container md-pl-10 md-pr-10">
+  {% if messages %}
+  {% for message in messages %}
+  <div class="row justify-content-center mb-0 mt-0">
+    <div class="col-6">
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }} Head back to the main page by clicking the link to the left.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+    <div class="row mb-5">
+      <div class="col text-center">
+        <h1 class="text-white">Fill out this simple form to get started.</h1>
+        <small class="lead text-white">Once you are finished, we will contact you within 1-2 business days</small>
+      </div>
+    </div>
+    {% load widget_tweaks %}
+  <div class="container-space">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8">
+      <form method="post">
+        {% csrf_token %}
+        <div class="row justify-content-center">
+          <div class="col-12">
+          <div class="form-group">
+          {% render_field form.email class+="form-control" placeholder="Your email address" %}
+          </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6">
+        <div class="form-group">
+          {% render_field form.name class+="form-control" placeholder="Your full name" %}
+        </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-group">
+          {% render_field form.phone class+="form-control" placeholder="Your phone number" %}
+            </div>
+          </div>
+
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="form-group">
+              {% render_field form.address class+="form-control" placeholder="Address for property" %}
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              {% render_field form.sq_ft class+="form-control" placeholder="Sq. footage" %}
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              {% render_field form.beds class+="form-control" placeholder="# of Beds" %}
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              {% render_field form.baths class+="form-control" placeholder="# of Baths" %}
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6">
+            <div class="form-group">
+              {% render_field form.move_in_date class+="form-control" placeholder="Approx. Move In Date" %}
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-group">
+              {% render_field form.property_type class+="form-control" placeholder="Property Type" %}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              {% render_field form.preffered_method_of_contact class+="form-control" placeholder="Preffered Method of Contact" %}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              {% render_field form.description class+="form-control" placeholder="Additional Details about the Property" %}
+            </div>
+          </div>
+        </div>
+      <div class="row justify-content-start mb-10">
+        <div class="col-12">
+      <button type="submit" class="btn btn-light transition-3d-hover">Submit Details!</button>
+      </div>
+      </div>
+      </form>
+    </div>
+  </div>
+<!-- End Contacts Form -->
+</div>
+</div>
+</main>
+{% endblock app_content %}

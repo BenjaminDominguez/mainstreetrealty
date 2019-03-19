@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Title -->
+  {% if title %}
+
+  <title>{{ title }}</title>
+
+  {% else %}
+  <title>Main Street Realty | Home</title>
+  {% endif %}
+
+
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% load static %}
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static 'properties/realestate.ico' %}">
+
+  <!-- Google Fonts -->
+  <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'properties/assets/vendor/animate.css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'properties/assets/vendor/slick-carousel/slick/slick.css' %}">
+
+  <style>
+  #background {
+    background-image: url('/static/properties/img/form-background.jpg');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    opacity: 0.9;
+  }
+
+  </style>
+
+  <!-- CSS Front Template -->
+  <link rel="stylesheet" href="{% static 'properties/assets/css/theme.min.css' %}">
+</head>
+<body>
+{% block content %}
+
+{% block app_content %}{% endblock app_content %}
+
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}
+<!-- ========== END FOOTER ========== -->
+
+<!-- JS Global Compulsory -->
+<script src="{% static 'properties/assets/vendor/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'properties/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js' %}"></script>
+<script src="{% static 'properties/assets/vendor/popper.js/dist/umd/popper.min.js' %}"></script>
+<script src="{% static 'properties/assets/vendor/bootstrap/bootstrap.min.js' %}"></script>
+
+<!-- JS Implementing Plugins -->
+<script src="{% static 'properties/assets/vendor/svg-injector/dist/svg-injector.min.js' %}"></script>
+<script src="{% static 'properties/assets/vendor/slick-carousel/slick/slick.js' %}"></script>
+<script src="{% static 'properties/assets/vendor/jquery-validation/dist/jquery.validate.min.js' %}"></script>
+
+<!-- JS Front -->
+<script src="{% static 'properties/assets/js/hs.core.js' %}"></script>
+<script src="{% static 'properties/assets/js/components/hs.slick-carousel.js' %}"></script>
+<script src="{% static 'properties/assets/js/components/hs.validation.js' %}"></script>
+<script src="{% static 'properties/assets/js/components/hs.focus-state.js' %}"></script>
+<script src="{% static 'properties/assets/js/components/hs.svg-injector.js' %}"></script>
+<script src="{% static 'properties/assets/js/components/hs.go-to.js' %}"></script>
+
+<!-- JS Plugins Init. -->
+<script>
+
+  $(document).on('ready', function () {
+
+    // initialization of slick carousel
+    $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
+
+    // initialization of form validation
+    $.HSCore.components.HSValidation.init('.js-validate');
+
+    // initialization of forms
+    $.HSCore.components.HSFocusState.init();
+
+    // initialization of go to
+    $.HSCore.components.HSGoTo.init('.js-go-to');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+{% extends "properties/base.html" %}
+{% block app_content %}
+  <!-- ========== MAIN ========== -->
+  <main id="content" role="main">
+    <!-- Hero v1 Section -->
+    <div class="u-hero-v1">
+      <!-- Hero Carousel Main -->
+      <div id="heroNav" class="js-slick-carousel u-slick"
+           data-autoplay="true"
+           data-speed="10000"
+           data-adaptive-height="true"
+           data-arrows-classes="d-none d-lg-inline-block u-slick__arrow-classic u-slick__arrow-centered--y rounded-circle"
+           data-arrow-left-classes="fas fa-arrow-left u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-lg-2 ml-xl-4"
+           data-arrow-right-classes="fas fa-arrow-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-lg-2 mr-xl-4"
+           data-numbered-pagination="#slickPaging"
+           data-nav-for="#heroNavThumb">
+        <div class="js-slide">
+          <!-- Slide #1 -->
+          <div class="d-lg-flex align-items-lg-center u-hero-v1__main" style="background-image: url(static/properties/img/carousel/carousel-img-3.jpg);">
+            <div class="container space-3 space-top-md-5 space-top-lg-3">
+              <div class="row">
+                <div class="col-md-8 col-lg-6 position-relative">
+                  <span class="d-block h1 display-3 text-white font-weight-light mb-2"
+                        data-scs-animation-in="fadeInUp">
+                  Main Street Realty
+                  </span>
+                  <h1 class="text-white display-4 font-size-md-down-5 mb-0"
+                      data-scs-animation-in="fadeInUp"
+                      data-scs-animation-delay="200">
+                    <span class="font-weight-semi-bold">A name in South Florida Real Estate that you can trust</span>
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Slide #1 -->
+        </div>
+
+        <div class="js-slide">
+          <!-- Slide #2 -->
+          <div class="d-lg-flex align-items-lg-center u-hero-v1__main" style="background-image: url(static/properties/img/carousel/carousel-img-5.jpg); opacity: 1;">
+            <div class="container space-3 space-top-md-5 space-top-lg-3">
+              <div class="row">
+                <div class="col-md-8 col-lg-6">
+                  <span class="d-block h4 text-white font-weight-light mb-2"
+                        data-scs-animation-in="fadeInUp">
+                    Here at Main Street Realty,
+                  </span>
+                  <h2 class="text-white display-4 font-size-md-down-5 mb-0"
+                      data-scs-animation-in="fadeInUp"
+                      data-scs-animation-delay="200">
+                    <span class="font-weight-semi-bold">We're focused on getting you a deal as fast as possible</span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Slide #2 -->
+        </div>
+      </div>
+      <!-- End Hero Carousel Main -->
+
+      <!-- Slick Paging -->
+      <div class="container position-relative">
+        <div id="slickPaging" class="u-slick__paging"></div>
+      </div>
+      <!-- End Slick Paging -->
+
+      <!-- Hero Carousel Secondary -->
+      <div id="heroNavThumb" class="js-slick-carousel u-slick"
+           data-autoplay="true"
+           data-speed="10000"
+           data-is-thumbs="true"
+           data-nav-for="#heroNav">
+      </div>
+      <!-- End Hero Carousel Secondary -->
+    </div>
+    <!-- End Hero v1 Section -->
+
+    <!-- CTA -->
+    <div class="bg-primary bg-img-hero">
+      <div class="container space-2">
+        <div class="row align-items-md-center">
+          <div class="col-md-8 mb-7 mb-md-0">
+            <!-- Content -->
+            <div class="media">
+              <span class="btn btn-lg btn-icon btn-light rounded-circle mr-4">
+                <span class="fas fa-home btn-icon__inner"></span>
+              </span>
+              <div class="media-body">
+                <h2 class="text-white font-weight-semi-bold">What's your home <span class="text-warning">worth?</span></h2>
+                <p class="text-white-70 mb-0">Main street realty can provide you with a <strong class="text-white">comparative market analysis</strong> by filling out a simple form.</p>
+              </div>
+            </div>
+            <!-- End Content -->
+          </div>
+
+          <div class="col-md-4 text-md-right">
+            <!-- Button Link -->
+            <a class="btn btn-warning transition-3d-hover" href="{% url 'properties:cma' %}">
+              Fill out the form
+              <span class="fas fa-angle-right ml-2"></span>
+            </a>
+            <!-- End Button Link -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End CTA -->
+
+    <!-- End Devices v2 Section -->
+    <div class="bg-light">
+    <div class="container space-2">
+    <div class="row ml-md-0 ml-1"><h3>Check out some of our currently active listings</h3></div>
+    {% for property in first_two_properties %}
+    <div class="row mt-5">
+                  <div class="col-md-4 d-md-flex align-items-md-start flex-md-column mb-5 mb-md-0">
+                    <img src="{{ property.src }}"class="img-fluid w-100" style="height: 300px; width: auto"></img>
+                  </div>
+
+                  <div class="col-md-8">
+                    <div class="row">
+                      <div class="col-8">
+                        <h2 class="h4 mb-1">
+                          ${{ property.formatted_price }}
+                        </h2>
+                      </div>
+                      <div class="col-4 text-right">
+                        <span class="badge badge-success">Active</span>
+                      </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="mb-3">
+                      <a class="font-size-2" href="{{ property.mls_link }}" target="_blank">
+                        <span class="fas fa-map-marker-alt mr-1"></span>
+                        {{ property.address }}, {{ property.city }} {{ property.zip }}
+                      </a>
+                    </div>
+                    <!-- End Location -->
+
+                    <!-- Icon Blocks -->
+                    <ul class="list-inline font-size-1">
+                      <li class="list-inline-item mr-3" title="1 bedroom">
+                        <span class="fas fa-bed text-muted mr-1"></span>
+                        {{ property.beds }}
+                      </li>
+                      <li class="list-inline-item mr-3" title="1 bathroom">
+                        <span class="fas fa-bath text-muted mr-1"></span>
+                        {{ property.bathrooms }}
+                      </li>
+                      <li class="list-inline-item mr-3" title="square feet">
+                        <span class="fas fa-ruler-combined text-muted mr-1"></span>
+                        {{ property.sq_ft }} sqft
+                      </li>
+                    </ul>
+                    <!-- End Icon Blocks -->
+
+                    <p class="font-size-1">
+                      {{ property.description }}
+                    </p>
+
+                  </div>
+                </div>
+            <!-- End Title -->
+            {% endfor %}
+        <div class="collapse" id="collapseMoreProperties">
+        {% for property in after_two_properties %}
+        <div class="row mt-5">
+                      <div class="col-md-4 d-md-flex align-items-md-start flex-md-column mb-5 mb-md-0">
+                        <img src="{{ property.src }}"class="img-fluid w-100" style="height: 300px;"></img>
+                      </div>
+
+                      <div class="col-md-8">
+                        <div class="row">
+                          <div class="col-8">
+                            <h2 class="h4 mb-1">
+                              <a href="property-description.html">${{ property.formatted_price }}</a>
+                            </h2>
+                          </div>
+                          <div class="col-4 text-right">
+                            <span class="badge badge-success">Active</span>
+                          </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="mb-3">
+                          <a class="font-size-2" href="{{ property.mls_link }}" target="_blank">
+                            <span class="fas fa-map-marker-alt mr-1"></span>
+                            {{ property.address }}, {{ property.city }} {{ property.zip }}
+                          </a>
+                        </div>
+                        <!-- End Location -->
+
+                        <!-- Icon Blocks -->
+                        <ul class="list-inline font-size-1">
+                          <li class="list-inline-item mr-3" title="1 bedroom">
+                            <span class="fas fa-bed text-muted mr-1"></span>
+                            {{ property.beds }}
+                          </li>
+                          <li class="list-inline-item mr-3" title="1 bathroom">
+                            <span class="fas fa-bath text-muted mr-1"></span>
+                            {{ property.bathrooms }}
+                          </li>
+                          <li class="list-inline-item mr-3" title="square feet">
+                            <span class="fas fa-ruler-combined text-muted mr-1"></span>
+                            {{ property.sq_ft }} sqft
+                          </li>
+                        </ul>
+                        <!-- End Icon Blocks -->
+
+                        <p class="font-size-1">
+                          {{ property.description }}
+                        </p>
+
+                      </div>
+                    </div>
+        {% endfor %}
+        </div>
+        <div class="row mt-5 mb-0">
+        <!-- View More - Link -->
+        <a class="ml-md-0 ml-5 link link-collapse small font-size-2" data-toggle="collapse" href="#collapseMoreProperties" role="button" aria-expanded="false" aria-controls="collapseMoreProperties">
+          <span class="link-collapse__default">View more properties</span>
+          <span class="link-collapse__active">View less properties</span>
+          <span class="link__icon ml-1">
+            <span class="link__icon-inner">+</span>
+          </span>
+        </a>
+        <!-- End View More - Link -->
+      </div>
+          </div>
+        </div>
+    <div class="bg-img-hero">
+      <div class="container space-2">
+        <div class="row align-items-md-center">
+          <div class="col-md-8 mb-7 mb-md-0">
+            <!-- Content -->
+            <div class="media">
+              <span class="btn btn-lg btn-icon btn-soft-primary rounded-circle mr-4">
+                <span class="fas fa-money-bill btn-icon__inner"></span>
+              </span>
+              <div class="media-body">
+                <h2 class="font-weight-semi-bold">Need a credible lender?</h2>
+                <p>Main Street Realty partners with <strong>Florida Homeowner Advisors</strong>. Fill in your email and upon working with them, they will be able to offer you a <strong>free apparaisal!</strong></p>
+              </div>
+            </div>
+            <!-- End Content -->
+          </div>
+          <!-- INPUT FORM STARTS HERE -->
+          {% load widget_tweaks %}
+          <div class="col-md-4 text-md-right">
+            <form class="js-validate js-form-message" method="post">
+              {% csrf_token %}
+            <div class="input-group">
+              <!-- <input type="text" class="form-control" name="name" id="subscribeSrEmail" placeholder="Your email address" aria-label="Enter your email address" aria-describedby="subscribeEmailButtonExample2" required="" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success"> -->
+              {% render_field form.email class+="form-control" placeholder="Enter your email address" data-msg="Please enter a valid email address" data-error-class="u-has-error" data-success-class="u-has-success" %}
+              <!--BUTTON -->
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-primary" id="subscribeEmailButtonExample2">
+                  <span class="fas fa-angle-right"></span>
+                </button>
+              </div>
+              <!--END BUTTON-->
+
+            </div>
+          </form>
+          </div>
+          <!-- INPUT FORM ENDS HERE -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+{% endblock app_content %}
+
+{% block footer %}
+
+<!-- ========== FOOTER ========== -->
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container mb-7">
+    <div class="row space-2">
+    <div class="col-md-4 mb-7 mb-md-0">
+    <!-- Contacts -->
+    <div class="media">
+      <span class="btn btn-icon btn-sm btn-soft-primary rounded-circle mr-3">
+        <span class="fas fa-phone btn-icon__inner"></span>
+      </span>
+      <div class="media-body">
+        <h4 class="h6 text-secondary font-weight-normal mb-0">Call us</h4>
+        <span class="d-block font-size-1"><a href="tel:786-529-6959">786-529-6959</a></span>
+      </div>
+    </div>
+    <!-- End Contacts -->
+  </div>
+  <div class="col-md-4 mb-7 mb-md-0">
+   <!-- Contacts -->
+   <div class="media">
+     <span class="btn btn-icon btn-sm btn-soft-primary rounded-circle mr-3">
+       <span class="fas fa-envelope btn-icon__inner"></span>
+     </span>
+     <div class="media-body">
+       <h4 class="h6 text-secondary font-weight-normal mb-0">Email us</h4>
+       <span class="d-block font-size-1"><a href="mailto:info@mainstreetrealtyandassociates.com">info@mainstreetrealtyandassociates.com</a></span>
+     </div>
+   </div>
+   <!-- End Contacts -->
+ </div>
+
+ <div class="col-md-4">
+   <!-- Contacts -->
+   <div class="media">
+     <span class="btn btn-icon btn-sm btn-soft-primary rounded-circle mr-3">
+       <span class="fas fa-map-marker-alt btn-icon__inner"></span>
+     </span>
+     <div class="media-body">
+       <h4 class="h6 text-secondary font-weight-normal mb-0">Address</h4>
+       <span class="d-block font-size-1">6713 Main Street, Suite 239, Miami Lakes, FL 33014</span>
+     </div>
+   </div>
+   <!-- End Contacts -->
+ </div>
+</div>
+  </div>
+
+
+</footer>
+{% endblock %}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>New lead</title>
+  </head>
+  <body>
+    <h1>New lead generated from website!</h1>
+    <h3>This person inquired about {{ type }} and the offer for a free {{ offer }}.</h3>
+    <h3>The email to contact is: {{ lead }}</h3>
+    {% if cma %}
+    <h3>The clients name is {{ name }}</h3>
+    <h3>Additional information regarding the client can be found on the admin dashboard</h3>
+    {% endif %}
+  </body>
+</html>
