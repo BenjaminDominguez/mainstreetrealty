@@ -13,7 +13,7 @@ class Status(models.Model):
 class Property(models.Model):
     status = models.ForeignKey(Status, on_delete=models.CASCADE)
     address = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='properties/static/properties/uploads/', default=None)
+    image = models.ImageField(upload_to='properties/', default=None)
     description = models.TextField(max_length=4000)
     price = models.IntegerField()
     city = models.CharField(max_length=100)
@@ -29,7 +29,8 @@ class Property(models.Model):
 
     def src(self):
         #back = 4 would give us an output of /static/properties/uploads/image.jpg
-        path = '/'.join(self.image.path.split('\\')[-3:])
+        path = '/'.join(self.image.path.split('\\')[-1])
+        img = self.image.path.split('\\')[-1]
         return path
 
     def bathrooms(self):
