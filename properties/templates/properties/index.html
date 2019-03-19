@@ -167,8 +167,9 @@
         <div class="collapse" id="collapseMoreProperties">
         {% for property in after_two_properties %}
         <div class="row mt-5">
+          {% load static %}
                       <div class="col-md-4 d-md-flex align-items-md-start flex-md-column mb-5 mb-md-0">
-                        <img src="{{ property.src }}"class="img-fluid w-100" style="height: 300px;"></img>
+                        <img src="{% static property.image.url %}"class="img-fluid w-100" style="height: 300px;"></img>
                       </div>
 
                       <div class="col-md-8">
