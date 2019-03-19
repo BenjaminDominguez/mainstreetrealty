@@ -28,8 +28,8 @@ class Property(models.Model):
     mls_link = models.CharField('MLS Link', max_length=100, default=None, null=True)
 
     def src(self):
-        #back = 4 would give us an output of /properties/static/uploads/image.jpg
-        path = '/'.join(self.image.path.split('\\')[-3:])
+        #back = 4 would give us an output of /static/properties/uploads/image.jpg
+        path = '/'.join(self.image.path.split('\\')[-4:])
         return path
 
     def bathrooms(self):
