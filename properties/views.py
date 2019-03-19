@@ -27,10 +27,10 @@ def index(request):
             'cma': False,
             'offer': 'free appraisal upon working with them'})
             mail_body = strip_tags(html_body)
-            mail_recipient = 'info@mainstreetrealtyandassociates.com'
+            mail_recipient = ['info@mainstreetrealtyandassociates.com', 'bendominguez011@gmail.com']
             mail_sender = 'fhanewlead@gmail.com'
             send_mail(mail_subject, mail_body,\
-            mail_sender, [mail_recipient], html_message=html_body, fail_silently=False)
+            mail_sender, mail_recipient, html_message=html_body, fail_silently=False)
             return HttpResponseRedirect(reverse('properties:index'))
     else:
         form = IndexForm()
@@ -57,10 +57,10 @@ def cma(request):
             'offer': 'comparative market analysis'
             })
             mail_body = strip_tags(html_body)
-            mail_recipient = 'info@mainstreetrealtyandassociates.com'
+            mail_recipient = ['info@mainstreetrealtyandassociates.com', 'bendominguez011@gmail.com']
             mail_sender = 'fhanewlead@gmail.com'
             send_mail(mail_subject, mail_body,\
-            mail_sender, [mail_recipient], html_message=html_body, fail_silently=False)
+            mail_sender, mail_recipient, html_message=html_body, fail_silently=False)
             new_user = form.save()
             messages.success(request, 'Thank you for filling out the form! We will get back to you in 1-2 business days.')
             return HttpResponseRedirect(reverse('properties:cma'))
