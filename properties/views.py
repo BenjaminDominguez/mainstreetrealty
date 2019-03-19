@@ -27,7 +27,7 @@ def index(request):
             'cma': False,
             'offer': 'free appraisal upon working with them'})
             mail_body = strip_tags(html_body)
-            mail_recipient = "bendominguez011@gmail.com"
+            mail_recipient = os.environ.get('SUPERUSER')
             mail_sender = os.environ.get('MAIL_USER')
             send_mail(mail_subject, mail_body,\
             mail_sender, [mail_recipient], html_message=html_body, fail_silently=False)
